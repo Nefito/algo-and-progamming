@@ -10,9 +10,14 @@ int main()
     printf("Input a value for a: ");
     scanf("%lf", &a);
     
+    //same here for 'b'
+    
+    printf("Input a value for b: ");
+    scanf("%lf", &b);
+    
     //now we place our inputs into the formula and get the result
     
-    l = ((a*a - 2*a*b + b*b) - (a*a + 2*a*b)) / (b*b)
+    l = ((a*a - 2*a*b + b*b) - (a*a + 2*a*b)) / (b*b);
     
     //now tell the result to the user
     
