@@ -21,7 +21,7 @@ int main()
     
     printf("The first result is: %d;\n", result);
     
-    //the second and third tasks are essentionaly the same and have the same results, so I did a little shortcut
+    //the second and third tasks are essentially the same and have the same results, so I did a little shortcut
     
     if (++m > --n)
     {
