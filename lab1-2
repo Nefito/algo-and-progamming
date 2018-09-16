@@ -10,7 +10,7 @@ int main()
     printf("Please enter a value for n: ");
     scanf("%d", &n);
     
-    //same hero for 'm'
+    //same here for 'm'
     
     printf("Please enter a value for m: ");
     scanf("%d", &m);
@@ -32,5 +32,5 @@ int main()
         printf("The second result is; False;\nThe third result is: False.\n");
     }
     
-    return 0:
+    return 0;
 }
