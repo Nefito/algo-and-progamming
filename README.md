@@ -1,2 +1,2 @@
-# uni
-for uni projects
+# algo and progamming
+for algo labs
