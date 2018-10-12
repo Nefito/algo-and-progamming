@@ -14,7 +14,7 @@ int main()
         s += a;
         a = x*( 1 / ((3*(n-1) + 2)*(3*(n-1) + 1)));
         n++;
-    }while (x > 0.0001);
+    }while (a > 0.0001);
     
     printf("the sum is %lf!\n", s);
     
