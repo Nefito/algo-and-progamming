@@ -1,30 +1,24 @@
 #include <stdio.h>
 #include <math.h>
 
-// here I make a factorial function
-double fac(double n)
-    {
-        if (n == 0 || n == 1) return 1;
-        return n * fac(n - 1);
-    }
-
-
 int main()
 {
-    double n, a, x, A, s;
-    n = 1;
+    double n, a, x, f, s, f3, A;
     s = 0;
+    n = 1;
+    f = 1;
+    f3 = 3*n*(3*n - 1);
 
     do
     {
-        a = (pow(3, n)*fac(n)) / fac((3*n));\
-        // x is the reccurent formula from a
-        x = 1/((3*n + 1)*(3*n + 2));
+        a = (pow(3, n)*f) / f3;
+        x = 1 / ((3*n + 1)*(3*n + 2)); //this is a recurrent formula for a
         A = a*x;
-        s = A + s;
+        s += A;
+        f = n*(n - 1);
         n++;
-    }while(A > 0.000l);
-    s+=1;
+    }while (A > 0.0001);
+    s+= 1; //since I have started with n = 1, I'm addding 1 for n = 0
 
     printf("The sum is %lf.\n", s);
 
