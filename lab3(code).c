@@ -10,13 +10,13 @@ int main()
     {
         SN = 0, SE = 0;
         x = (X - 1) / (X + 1);
-        Y = log(X)/2;
-        for(n = 0; n <= 10; n++)
+        Y = log(X)/2; //this is my function
+        for(n = 0; n <= 10; n++) //here i'm creating a loop for SN
         {
             A = (1 / (2*n + 1))*(pow(x, (2*n + 1)));
             SN += A;
         }
-        do
+        do //here for SE
         {
             n = 0;
             A = (1 / (2*n + 1))*(pow(x, (2*n + 1)));
