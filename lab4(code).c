@@ -41,7 +41,7 @@ int main()
         {
             arr2[i] = arr1[i];
         }
-        else // but if it is we eleminate it
+        else // but if it is we eliminate it
         {
             counter++;
             if(arr1[i] == arr1[l-1])
