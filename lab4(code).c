@@ -67,7 +67,7 @@ int main()
             }
         }
     }
-    l-=counter; //shorten our array by the number jf min elements
+    l-=counter; //shorten our array by the number of min elements
 
     for(i = 0; i < l; i++)
     {
