@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 int main()
 {
-    int i, j, k, l, min, l1, counter;
+    int i, j, k, l, min, i1, counter;
     double n, s, L;
     s = 0, counter = 0;
     int arr1[100], arr2[100];
@@ -21,7 +20,7 @@ int main()
             }while (l > 50 || l < 0);
         }
 
-    min = arr1[0];
+    min = 100;
     for (i = 0; i < l; i++)
     {
         arr1[i] = rand() % 10;
@@ -34,37 +33,51 @@ int main()
     }
     printf("This array without its minimal values is:\n");
 
-    l1 = l;
-    for (i = 0; i < l; i++)
+    for(i = 0; i < l; i++)
     {
-        if (arr1[i] != min) //if the ith element isnt minimal we simply transfer it into the 2nd array
+        if(arr1[0] == min)
         {
-            arr2[i] = arr1[i];
-        }
-        else // but if it is we eliminate it
-        {
-            counter++;
-            if(arr1[i] == arr1[l-1])
+            if (arr1[i] == min)
             {
-                arr2[i] = arr1[l-2];
-                l1--;
+                counter++;
+                //when I have >1 mins the index of min element shifts on counter-1 positions back
+                i1 = i-(counter-1);
+                for(k = i; k < l; k++)
+                {
+                    arr2[i1] = arr1[i1+counter];
+                    arr2[k] = arr1[k+counter];
+                }
             }
-            else
+        }
+        else
+        {
+            if(arr1[i] != min)
             {
-                arr2[i] = arr1[l-counter];
-                l1--;
+                arr2[i] = arr1[i];
+            }
+            else if (arr1[i] == min)
+            {
+                counter++;
+                i1 = i-(counter-1);
+                for(k = i; k < l; k++)
+                {
+                    arr2[i1] = arr1[i1+counter];
+                    arr2[k] = arr1[k+counter];
+                }
             }
         }
     }
-    for(i = 0; i < l1; i++)
+    l-=counter; //shorten our array by the number jf min elements
+
+    for(i = 0; i < l; i++)
     {
         s += arr2[i];
         printf("%d\n", arr2[i]);
     }
 
     printf("And the new array is:\n");
-    n = s / l1;
-    L = l1 + 3;
+    n = s / l;
+    L = l + 3;
     for (j = 0; j < 3; j++)
         {
             arr3[j] = n;
