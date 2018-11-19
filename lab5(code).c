@@ -6,23 +6,23 @@ int funct(int row, int column, int a[row][column])
     int i, k, j, n, left, right, counter;
     left = 0, right = 0, counter = 0;
 
-    for(n = 1; n < column-1; n++)
+    for(n = 1; n < column-2; n++) // n is the index of the column that splits the matrix
     {
         for(i = 0; i < row; i++)
         {
             for (k = 0; k < n; k++)
             {
-                left+=a[i][k];
+                left+=a[i][k]; //for every n i sum up the left half
             }
             for(j = n+1; j < column - n; j++)
             {
-                right+=a[i][j];
+                right+=a[i][j]; //and the right half of the matrix
             }
             if(left > right)
             {
                 counter++;
             }
-            left = 0, right = 0;
+            left = 0, right = 0; //reset left and right before n changes
         }
     }
 
