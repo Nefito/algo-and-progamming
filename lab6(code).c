@@ -10,7 +10,7 @@ void swap(char *x, char *y) //function for swapping 2 elements
 }
 int main()
 {
-    int i, k, j, n, m, l, p, len = 0, c1 = 0, c2 = 0, word;
+    int i, k, j, len = 0, c1 = 0, c2 = 0, word;
     char string[100];
 
     printf("Enter a string:\n");
