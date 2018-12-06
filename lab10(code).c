@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int funct(int row, int column, int a[row][column])
+int funct(int row, int column, int *a)
 {
     int i, k, j, n, left, right, counter;
     left = 0, right = 0, counter = 0;
@@ -12,11 +12,11 @@ int funct(int row, int column, int a[row][column])
         {
             for (k = 0; k < n; k++)
             {
-                left+=a[i][k]; //for every n i sum up the left half
+                left+= *(a + i*n + k); //for every n i sum up the left half
             }
             for(j = n+1; j < column - n; j++)
             {
-                right+=a[i][j]; //and the right half of the matrix
+                right+= *(a + i* column + j); //and the right half of the matrix
             }
             if(left > right)
             {
@@ -39,11 +39,6 @@ int funct(int row, int column, int a[row][column])
 int main()
 {
     int row, column, i, k, x;
-    row = 10, column = 10;
-    int matrix[row][column];
-	
-	 **matrix = malloc(row*column*sizeof(int));
-
 
     printf("Enter the number of rows for the matrix: \n");
     scanf("%d", &row);
@@ -60,13 +55,23 @@ int main()
         scanf("%d", &column);
     }
 
+    int *matrix;
+    int size = row*column;
+    matrix = (int*) malloc(size*sizeof(int));
+
+    if(!(matrix = (int*) malloc(size*sizeof(int))))
+    {
+        printf("Allocation failed");
+        exit(0);
+    }
+
     printf("Your matrix is:\n");
     for(i = 0; i < row; i++)
     {
         for(k = 0; k < column; k++)
         {
-            matrix[i][k] = rand() % 10;
-            printf(" %d ", matrix[i][k]);
+            *(matrix + i*column + k) = rand() % 10;
+            printf(" %d ",*(matrix + i*column + k));
         }
         printf("\n");
     }
@@ -80,7 +85,8 @@ int main()
     {
         printf("Such a column doesn't exist\n");
     }
-	free(**matrix);
+
+    free(matrix);
 
     return 0;
 }
