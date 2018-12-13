@@ -4,22 +4,11 @@
 
 #define MAX 255
 
-void print_f(FILE *f)
-{
-     char ch;
-     ch = fgetc(f);
-     while(ch != EOF)
-     {
-        printf("%c", ch);
-        ch = fgetc(f);
-     }
-}
-
 int main()
 {
     char cons[] = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z' };
-    int n, n1, n2, i, k, j, counter = 0, c_arr[MAX];
-    char arr[MAX];
+    int n, n1, n2, i, k, j, counter = 0, c_arr[MAX], print;
+    char arr[MAX], arr1[MAX], c;
     FILE *f1;
     FILE *f2;
     f1 = fopen("f1.txt", "w+");
@@ -55,10 +44,11 @@ int main()
         scanf("%d%d", &n1, &n2);
     }
 
-    for( i = 0; i < n; i++)
+    for( i = 1; i <= n; i++)
     {
         printf("Enter string %d into the file:\n", i);
         fgets(arr, MAX, stdin);
+        fputs(arr, f1);
 
         if(i > n1 && i < n2)
         {
@@ -81,24 +71,51 @@ int main()
         }
     }
     int max = 0;
-    for(k = 0; k < i; k++)
+    int max_index;
+    for(k = 1; k <= i; k++)
     {
         if(c_arr[k] > max)
         {
-            max = k;
+            max = c_arr[k];
+            max_index = k;
         }
     }
 
     printf("F1:\n");
-    print_f(f1);
+    while(1)
+    {
+        print = fgetc(f1);
+        if (feof(f1))
+        {
+            break;
+        }
+        printf("%c", print);
+    }
+    printf("\n");
 
     printf("F2:\n");
-    print_f(f2);
+     while(1)
+    {
+        print = fgetc(f2);
+        if (feof(f2))
+        {
+            break;
+        }
+        printf("%c", print);
+    }
+    printf("\n");
 
     fclose(f1);
     fclose(f2);
 
-    printf("The row in F2 which has the most consonants is row #%d!\n", max);
+    if(max_index == 0)
+    {
+        printf("No rows with consonants in F2 :(\n");
+    }
+    else
+    {
+        printf("The row in F2 which has the most consonants is row #%d!\n", max_index);
+    }
 
     return 0;
 }
